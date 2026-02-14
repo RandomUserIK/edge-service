@@ -34,8 +34,10 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j")
 	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
 	implementation("org.springframework.session:spring-session-data-redis")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
