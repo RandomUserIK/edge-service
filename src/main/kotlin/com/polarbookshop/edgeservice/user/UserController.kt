@@ -37,6 +37,6 @@ class UserController {
 			username = oidcUser.preferredUsername,
 			firstName = oidcUser.givenName,
 			lastName = oidcUser.familyName,
-			roles = listOf("employee", "customer"),
+			roles = oidcUser.getClaimAsStringList("roles"),
 		).toMono()
 }

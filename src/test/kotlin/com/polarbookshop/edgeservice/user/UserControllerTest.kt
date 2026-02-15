@@ -59,5 +59,6 @@ internal class UserControllerTest @Autowired constructor(
 			it.claim(StandardClaimNames.PREFERRED_USERNAME, expectedUser.username)
 			it.claim(StandardClaimNames.GIVEN_NAME, expectedUser.firstName)
 			it.claim(StandardClaimNames.FAMILY_NAME, expectedUser.lastName)
+			it.claim("roles", expectedUser.roles)
 		}
 }
