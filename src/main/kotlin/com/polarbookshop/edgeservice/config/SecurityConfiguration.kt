@@ -34,6 +34,7 @@ class SecurityConfiguration {
 		http
 			.authorizeExchange {
 				it
+					.pathMatchers("/actuator/**").permitAll()
 					.pathMatchers("/", "/*.css", "/*.js", "/favicon.ico").permitAll()
 					.pathMatchers(HttpMethod.GET, "/books/**").permitAll()
 					.anyExchange()

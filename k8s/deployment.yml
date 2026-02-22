@@ -35,3 +35,15 @@ spec:
               value: http://order-service
             - name: SPRING_DATA_REDIS_HOST
               value: polar-redis
+          livenessProbe:
+            httpGet:
+              port: 9000
+              path: /actuator/health/liveness
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 9000
+              path: /actuator/health/readiness
+            initialDelaySeconds: 5
+            periodSeconds: 15
