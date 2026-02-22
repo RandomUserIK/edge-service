@@ -1,5 +1,6 @@
 package com.polarbookshop.edgeservice.user
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.context.ReactiveSecurityContextHolder
@@ -12,6 +13,8 @@ import reactor.kotlin.core.publisher.toMono
 
 @RestController
 class UserController {
+
+	private val logger = KotlinLogging.logger { }
 
 	// @GetMapping("user")
 	// fun getUser(): Mono<User> =
@@ -32,11 +35,13 @@ class UserController {
 	@GetMapping("user")
 	fun getUser(
 		@AuthenticationPrincipal oidcUser: OidcUser,
-	): Mono<User> =
-		User(
+	): Mono<User> {
+		logger.info { "Fetching information about the currently authenticated user" }
+		return User(
 			username = oidcUser.preferredUsername,
 			firstName = oidcUser.givenName,
 			lastName = oidcUser.familyName,
 			roles = oidcUser.getClaimAsStringList("roles"),
 		).toMono()
+	}
 }
